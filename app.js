@@ -3,16 +3,18 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const mysql = require('mysql');
+const dotenv = require('dotenv');
+dotenv.config();
 
 // Middleware
 app.use(bodyParser.json());
 
 // Connexió a la base de dades
 const db = mysql.createConnection({
-  host: 'localhost',
-  user: 'pm',
-  password: 'linuxlinux',
-  database: 'practices_management'
+  host: process.env.host,
+  user: process.env.user,
+  password: process.env.password,
+  database: process.env.database
 });
 
 db.connect((err) => {
