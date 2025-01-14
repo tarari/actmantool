@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Gestió d'Alumnes</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>Gestió d'Alumnes</h1>
+  <form id="addStudentForm">
+    <input type="text" id="name" placeholder="Nom" required>
+    <input type="email" id="email" placeholder="Correu electrònic" required>
+    <input type="text" id="group" placeholder="Grup" required>
+    <button type="submit">Afegir Alumne</button>
+  </form>
+
+  <table id="studentsTable">
+    <thead>
+      <tr>
+        <th>Nom</th>
+        <th>Correu</th>
+        <th>Grup</th>
+        <th>Accions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Dades carregades dinàmicament -->
+    </tbody>
+  </table>
+
+  <script>
+    document.getElementById('addStudentForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const student = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        group_name: document.getElementById('group').value,
+      };
+
+      try {
+        const response = await fetch('http://localhost:5000/students', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(student),
+        });
+
+        if (!response.ok) throw new Error('Error afegint alumne');
+        console.log('Alumne afegit correctament');
+        fetchStudents();
+      } catch (error) {
+        console.error(error);
+      }
+    });
+
+    async function fetchStudents() {
+      try {
+        const response = await fetch('http://localhost:5000/students');
+        if (!response.ok) throw new Error('Error obtenint alumnes');
+        const students = await response.json();
+        const tableBody = document.querySelector('#studentsTable tbody');
+        tableBody.innerHTML = '';
+
+        students.forEach((student) => {
+          const row = document.createElement('tr');
+          row.innerHTML = `
+            <td>${student.name}</td>
+            <td>${student.email}</td>
+            <td>${student.group_name}</td>
+            <td><button onclick="deleteStudent(${student.id})">Eliminar</button></td>
+          `;
+          tableBody.appendChild(row);
+        });
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    async function deleteStudent(id) {
+      try {
+        const response = await fetch(`http://localhost:5000/students/${id}`, { method: 'DELETE' });
+        if (!response.ok) throw new Error('Error eliminant alumne');
+        console.log('Alumne eliminat correctament');
+        fetchStudents();
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    fetchStudents(); // Carrega inicial
+  </script>
+</body>
+</html>

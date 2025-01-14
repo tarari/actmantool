@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestió de Pràctiques</title>
+  <link rel="stylesheet" href="public/css/styles.css">
+</head>
+<body>
+  <div class="dashboard">
+    <h1>Dashboard</h1>
+    <button onclick="window.location.href='students.html'">Gestió d'Alumnes</button>
+    <button onclick="window.location.href='activities.html'">Gestió d'Activitats</button>
+  </div>
+
+  <script>
+    // Exemple per obtenir i mostrar alumnes
+    async function fetchStudents() {
+      try {
+        const response = await fetch('http://localhost:3000/students');
+        if (!response.ok) throw new Error('Error obtenint alumnes');
+        const students = await response.json();
+        console.log(students); // Mostrar alumnes al navegador (debug)
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    fetchStudents(); // Crida inicial
+  </script>
+</body>
+</html>
+
+<!-- Pantalla de Gestió d'Alumnes -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Gestió d'Alumnes</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>Gestió d'Alumnes</h1>
+  <form id="addStudentForm">
+    <input type="text" id="name" placeholder="Nom" required>
+    <input type="email" id="email" placeholder="Correu electrònic" required>
+    <input type="text" id="group" placeholder="Grup" required>
+    <button type="submit">Afegir Alumne</button>
+  </form>
