@@ -1,5 +1,4 @@
 
-.codegpt/
-.vendor/
-.node_modules/
+.codegpt
+.node_modules
 .env

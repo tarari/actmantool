@@ -4,13 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gestió de Pràctiques</title>
-  <link rel="stylesheet" href="public/css/styles.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+ 
 </head>
 <body>
   <div class="dashboard">
     <h1>Dashboard</h1>
-    <button onclick="window.location.href='students.html'">Gestió d'Alumnes</button>
-    <button onclick="window.location.href='activities.html'">Gestió d'Activitats</button>
+    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onclick="window.location.href='students.html'">Gestió d'Alumnes</button>
+    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onclick="window.location.href='activities.html'">Gestió d'Activitats</button>
   </div>
 
   <script>
@@ -31,18 +32,3 @@
 </body>
 </html>
 
-<!-- Pantalla de Gestió d'Alumnes -->
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Gestió d'Alumnes</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <h1>Gestió d'Alumnes</h1>
-  <form id="addStudentForm">
-    <input type="text" id="name" placeholder="Nom" required>
-    <input type="email" id="email" placeholder="Correu electrònic" required>
-    <input type="text" id="group" placeholder="Grup" required>
-    <button type="submit">Afegir Alumne</button>
-  </form>

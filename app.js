@@ -1,6 +1,7 @@
 
 const express = require('express');
 const app = express();
+const cors = require('cors')
 const bodyParser = require('body-parser');
 const mysql = require('mysql');
 const dotenv = require('dotenv');
@@ -8,7 +9,7 @@ dotenv.config();
 
 // Middleware
 app.use(bodyParser.json());
-
+app.use(cors())
 // Connexió a la base de dades
 const db = mysql.createConnection({
   host: process.env.host,
