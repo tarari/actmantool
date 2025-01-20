@@ -79,7 +79,7 @@ app.post('/progress', (req, res) => {
 });
 
 // Servidor en execució
-const PORT = 5000;
+const PORT = process.env.port;
 app.listen(PORT, () => {
   console.log(`Servidor executant-se a http://localhost:${PORT}`);
 });
