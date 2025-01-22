@@ -7,7 +7,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-  <h1 class="text-xl">Gestió d'Alumnes</h1>
+  <h1 class="text-xl text-blue-500">Gestió d'Alumnes</h1>
   <form id="addStudentForm" class="flex flex-col">
     <input type="text" id="name" placeholder="Nom" required>
     <input type="email" id="email" placeholder="Correu electrònic" required>
@@ -28,7 +28,6 @@
       <!-- Dades carregades dinàmicament -->
     </tbody>
   </table>
-
   <script>
     document.getElementById('addStudentForm').addEventListener('submit', async (e) => {
       e.preventDefault();

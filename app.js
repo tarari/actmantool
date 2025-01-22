@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 const mysql = require('mysql');
 const dotenv = require('dotenv');
 dotenv.config();
-
+process.title="MyApp";
 // Middleware
 app.use(bodyParser.json());
 app.use(cors())
