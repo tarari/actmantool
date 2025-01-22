@@ -6,7 +6,7 @@ document.getElementById('addActivityForm').addEventListener('submit', async (e) 
       description: document.getElementById('description').value,
       deadline: document.getElementById('deadline').value,
     };
-    const url="https://actmantool.toniprojects.eu:5001/activities";
+    const url="http://actmantool.toniprojects.eu:5001/activities";
     try {
       const response = await fetch(url, {
         method: 'POST',
@@ -24,7 +24,7 @@ document.getElementById('addActivityForm').addEventListener('submit', async (e) 
 
   async function fetchActivities() {
     try {
-        const url="https://actmantool.toniprojetcs.eu:5001/activities";
+        const url="http://actmantool.toniprojetcs.eu:5001/activities";
 
       const response = await fetch(url);
       if (!response.ok) throw new Error('Error obtenint activitats');
@@ -49,7 +49,7 @@ document.getElementById('addActivityForm').addEventListener('submit', async (e) 
 
   async function deleteActivity(id) {
     try {
-        const url="https://actmantool.toniprojects.eu:5001/activities";
+        const url="http://actmantool.toniprojects.eu:5001/activities";
 
       const response = await fetch(url + `${id}`, { method: 'DELETE' });
       if (!response.ok) throw new Error('Error eliminant activitat');
