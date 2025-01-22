@@ -24,6 +24,8 @@ document.getElementById('addActivityForm').addEventListener('submit', async (e) 
 
   async function fetchActivities() {
     try {
+        const url="https://actmantool.toniprojecs.eu:5001/activities";
+
       const response = await fetch(url);
       if (!response.ok) throw new Error('Error obtenint activitats');
       const activities = await response.json();
@@ -47,6 +49,8 @@ document.getElementById('addActivityForm').addEventListener('submit', async (e) 
 
   async function deleteActivity(id) {
     try {
+        const url="https://actmantool.toniprojecs.eu:5001/activities";
+
       const response = await fetch(url + `${id}`, { method: 'DELETE' });
       if (!response.ok) throw new Error('Error eliminant activitat');
       console.log('Activitat eliminada correctament');
