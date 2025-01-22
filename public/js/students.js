@@ -1,0 +1,59 @@
+document.getElementById('addStudentForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const student = {
+      name: document.getElementById('name').value,
+      email: document.getElementById('email').value,
+      course: document.getElementById('course').value,
+    };
+ const url="https://actmantool.toniprojecs.eu:5001/students";
+    try {
+      const response = await fetch('http://localhost:3000/students', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(student),
+      });
+
+      if (!response.ok) throw new Error('Error afegint estudiant');
+      console.log('Estudiant afegit correctament');
+      fetchStudents();
+    } catch (error) {
+      console.error(error);
+    }
+  });
+
+  async function fetchStudents() {
+    try {
+      const response = await fetch(url);
+      if (!response.ok) throw new Error('Error obtenint estudiants');
+      const students = await response.json();
+      const tableBody = document.querySelector('#studentsTable tbody');
+      tableBody.innerHTML = '';
+
+      students.forEach((student) => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${student.name}</td>
+          <td>${student.email}</td>
+          <td>${student.course}</td>
+          <td><button onclick="deleteStudent(${student.id})">Eliminar</button></td>
+        `;
+        tableBody.appendChild(row);
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  async function deleteStudent(id) {
+    try {
+      const response = await fetch(url + `${id}`, { method: 'DELETE' });
+      if (!response.ok) throw new Error('Error eliminant estudiant');
+      console.log('Estudiant eliminat correctament');
+      fetchStudents();
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  fetchStudents(); 
