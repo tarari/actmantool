@@ -6,7 +6,7 @@ document.getElementById('addStudentForm').addEventListener('submit', async (e) =
       email: document.getElementById('email').value,
       course: document.getElementById('course').value,
     };
- const url="https://actmantool.toniprojecs.eu:5001/students";
+ const url="https://actmantool.toniprojects.eu:5001/students";
     try {
       const response = await fetch(url, {
         method: 'POST',
@@ -24,7 +24,7 @@ document.getElementById('addStudentForm').addEventListener('submit', async (e) =
 
   async function fetchStudents() {
     try {
-      const url="https://actmantool.toniprojecs.eu:5001/students";
+      const url="https://actmantool.toniprojects.eu:5001/students";
       const response = await fetch(url);
       if (!response.ok) throw new Error('Error obtenint estudiants');
       const students = await response.json();
@@ -48,7 +48,7 @@ document.getElementById('addStudentForm').addEventListener('submit', async (e) =
 
   async function deleteStudent(id) {
     try {
-        const url="https://actmantool.toniprojecs.eu:5001/students";
+        const url="https://actmantool.toniprojetcs.eu:5001/students";
       const response = await fetch(url + `${id}`, { method: 'DELETE' });
       if (!response.ok) throw new Error('Error eliminant estudiant');
       console.log('Estudiant eliminat correctament');
