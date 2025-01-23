@@ -25,7 +25,7 @@ document.getElementById('addStudentForm').addEventListener('submit', async (e) =
   async function fetchStudents() {
     try {
       const url="http://actmantool.toniprojects.eu:5001/students";
-      const response = await fetch(url);
+      const response = await fetch("http://actmantool.toniprojects.eu:5001/students");
       if (!response.ok) throw new Error('Error obtenint estudiants');
       const students = await response.json();
       const tableBody = document.querySelector('#studentsTable tbody');
