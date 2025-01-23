@@ -4,7 +4,7 @@ document.getElementById('addStudentForm').addEventListener('submit', async (e) =
     const student = {
       name: document.getElementById('name').value,
       email: document.getElementById('email').value,
-      course: document.getElementById('group_name').value,
+      group_name: document.getElementById('group_name').value,
     };
  const url="http://actmantool.toniprojects.eu:5001/students";
     try {
@@ -36,7 +36,7 @@ document.getElementById('addStudentForm').addEventListener('submit', async (e) =
         row.innerHTML = `
           <td>${student.name}</td>
           <td>${student.email}</td>
-          <td>${student.course}</td>
+          <td>${student.group}</td>
           <td><button onclick="deleteStudent(${student.id})">Eliminar</button></td>
         `;
         tableBody.appendChild(row);
