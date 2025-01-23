@@ -17,7 +17,7 @@
 
     async function fetchStudents() {
       try {
-        const response = await fetch('http://localhost:5001/students');
+        const response = await fetch('http://actmantool.toniprojects.eu:5001/students');
         if (!response.ok) throw new Error('Error obtenint alumnes');
         const students = await response.json();
         console.log(students); // Mostrar alumnes al navegador (debug)
